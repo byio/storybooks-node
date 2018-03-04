@@ -6,3 +6,11 @@ exports.googleAuth = passport.authenticate('google', {
     'email'
   ]
 });
+
+exports.googleAuthCallbackFailure = passport.authenticate('google', {
+  failureRedirect: '/'
+});
+
+exports.googleAuthCallbackSuccess = (req, res) => {
+  res.redirect('/dashboard');
+};
