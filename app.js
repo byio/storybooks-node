@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const session = require('express-session');
 const passport = require('passport');
 
 const keys = require('./config/keys');
@@ -15,8 +16,19 @@ mongoose.connect(keys.mongoURI)
           if (err) throw err;
         });
 
+// Sessions Middleware
+app.use(session({
+  secret: 'this secret can be any string',
+  resave: false,
+  saveUninitialized: false
+}));
+
 // Passport Config
 require('./config/passport')(passport);
+
+// Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Load Routes
 const index = require('./routes/index');
