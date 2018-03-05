@@ -1,7 +1,19 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const passport = require('passport');
 
+const keys = require('./config/keys');
+
 const app = express();
+
+// Mongoose Connect
+mongoose.connect(keys.mongoURI)
+        .then(() => {
+          console.log('Connected to mLab mongoDB');
+        })
+        .catch(err => {
+          if (err) throw err;
+        });
 
 // Passport Config
 require('./config/passport')(passport);
