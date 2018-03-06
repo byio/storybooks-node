@@ -1,6 +1,6 @@
 const passport = require('passport');
 
-exports.googleAuth = passport.authenticate('google', {
+exports.googleAuthLogin = passport.authenticate('google', {
   scope: [
     'profile',
     'email'
@@ -21,4 +21,9 @@ exports.verifyAuth = (req, res) => {
   } else {
     res.send('Not authenticated.');
   }
+};
+
+exports.googleAuthLogout = (req, res) => {
+  req.logout();
+  res.redirect('/');
 };
