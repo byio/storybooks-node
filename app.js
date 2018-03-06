@@ -30,6 +30,12 @@ require('./config/passport')(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Global Variables Middleware
+app.use((req, res, next) => {
+  res.locals.user = req.user || null;
+  next();
+});
+
 // Load Routes
 const index = require('./routes/index');
 const auth = require('./routes/auth');
