@@ -1,0 +1,33 @@
+<nav class="grey darken-3">
+  <div class="container">
+    <div class="nav-wrapper">
+      <!-- Center Brand Logo -->
+      <a href="/stories" class="brand-logo center">StoryBooks</a>
+      <!-- Hamburger Menu Navbar Left -->
+      <a href="#" data-activates="main-menu" class="button-collapse show-on-large">
+        <i class="fa fa-bars"></i>
+      </a>
+      <!-- Navbar Right -->
+      <ul class="right hide-on-small-only">
+        {{#if user}}
+          <li>
+            <a href="/dashboard">
+              <i class="fa fa-user"></i> {{user.firstName}} {{user.lastName}}
+            </a>
+          </li>
+          <li>
+            <a href="/auth/logout">
+              <i class="fa fa-sign-out"></i> Logout
+            </a>
+          </li>
+        {{else}}
+          <li>
+            <a href="/stories">
+              <i class="fa fa-book"></i> Public Stories
+            </a>
+          </li>
+        {{/if}}
+      </ul>
+    </div>
+  </div>
+</nav>
