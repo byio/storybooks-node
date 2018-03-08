@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const passport = require('passport');
@@ -34,12 +35,16 @@ app.use(passport.session());
 // Global Variables Middleware
 app.use((req, res, next) => {
   res.locals.user = req.user || null;
+  res.locals.currentYear = new Date().getFullYear();
   next();
 });
 
 // Handlebars Middleware
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }));
 app.set('view engine', 'hbs');
+
+// Express Static Middleware (route for static resources)
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Load Routes
 const index = require('./routes/index');
