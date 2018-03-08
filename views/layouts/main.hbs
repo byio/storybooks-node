@@ -16,7 +16,7 @@
     {{#if user}}
     {{> _add-btn}}
     {{/if}}
-    
+
     <main>
       <div class="container">
         {{{body}}}
@@ -34,7 +34,13 @@
     <!-- Initialize Side Menu Animation -->
     <script type="text/javascript">
       $(document).ready(() => {
+        // initialize hamburger menu side nav
         $('.button-collapse').sideNav();
+        // initialize add story button tooltip
+        $('.tooltipped').tooltip({
+          delay: 50,
+          position: 'top'
+        });
       });
     </script>
   </body>
