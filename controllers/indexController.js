@@ -1,5 +1,5 @@
 exports.renderHomePage = (req, res) => {
-  res.send('boilerplate for node/express app');
+  res.render('index/welcome');
 };
 
 exports.renderDashboard = (req, res) => {

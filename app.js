@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const passport = require('passport');
+const exphbs = require('express-handlebars');
 
 const keys = require('./config/keys');
 
@@ -35,6 +36,10 @@ app.use((req, res, next) => {
   res.locals.user = req.user || null;
   next();
 });
+
+// Handlebars Middleware
+app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }));
+app.set('view engine', 'hbs');
 
 // Load Routes
 const index = require('./routes/index');
