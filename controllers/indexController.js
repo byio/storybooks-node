@@ -3,5 +3,5 @@ exports.renderHomePage = (req, res) => {
 };
 
 exports.renderDashboard = (req, res) => {
-  res.send('dashboard page');
+  res.render('index/dashboard');
 };
