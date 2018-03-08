@@ -27,6 +27,43 @@
             </a>
           </li>
         {{/if}}
+        <!-- Side Menu (Toggles when hamburger menu is clicked; see id attribute) -->
+        <ul class="side-nav" id="main-menu">
+          <!-- Login With Google Link (only when logged out) -->
+          {{#unless user}}
+          <li>
+            <a href="/auth/google" class="btn red darken-1">
+              <i class="fa fa-google-plus"></i>Login With Google
+            </a>
+          </li>
+          <li class="divider"></li>
+          {{/unless}}
+          <!-- Public Stories Link (always) -->
+          <li>
+            <a href="/stories">
+              <i class="fa fa-book"></i> Public Stories
+            </a>
+          </li>
+          <!-- Dashboard, Logout, My Stories Links (only when logged in) -->
+          {{#if user}}
+          <li class="divider"></li>
+          <li>
+            <a href="/dashboard">
+              <i class="fa fa-user"></i> {{user.firstName}} {{user.lastName}}
+            </a>
+          </li>
+          <li>
+            <a href="/stories/my">
+              <i class="fa fa-archive"></i> My Stories
+            </a>
+          </li>
+          <li>
+            <a href="/logout">
+              <i class="fa fa-sign-out"></i> Logout
+            </a>
+          </li>
+          {{/if}}
+        </ul>
       </ul>
     </div>
   </div>
