@@ -31,7 +31,8 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <!-- Initialize Side Menu Animation -->
+    <script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
+    <!-- Initialize Materialize CSS -->
     <script type="text/javascript">
       $(document).ready(() => {
         // initialize hamburger menu side nav
@@ -41,6 +42,11 @@
           delay: 50,
           position: 'top'
         });
+        // initialize checkbox in form
+        $('select').material_select();
+      });
+      CKEDITOR.replace('body', {
+        plugins: 'wysiwygarea,toolbar,basicstyles,link'
       });
     </script>
   </body>
