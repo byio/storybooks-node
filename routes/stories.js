@@ -6,7 +6,7 @@ const router = express.Router();
 const stories_controller = require('../controllers/storiesController');
 
 // /stories Routes
-router.get('/', stories_controller.renderAllStories);
+router.get('/', stories_controller.fetchAllStories);
 router.get('/add', stories_controller.renderAddStoryForm);
 router.post('/', stories_controller.addStory);
 router.get('/show/:id', stories_controller.renderOneStory);

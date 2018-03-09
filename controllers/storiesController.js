@@ -1,7 +1,12 @@
 // Load Story Model
 const Story = require('../models/Story');
 
-exports.renderAllStories = (req, res) => {};
+exports.fetchAllStories = (req, res) => {
+  Story.find({ status: "public" })
+       .then(stories => {
+         console.log(stories);
+       });
+};
 
 exports.renderOneStory = (req, res) => {
   res.send(`showing story with id ${req.params.id}`);
