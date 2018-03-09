@@ -4,7 +4,7 @@ const Story = require('../models/Story');
 exports.fetchAllStories = (req, res) => {
   Story.find({ status: "public" })
        .then(stories => {
-         console.log(stories);
+         res.render('stories/index', { stories });
        });
 };
 
