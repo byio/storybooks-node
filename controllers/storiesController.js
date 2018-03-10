@@ -10,7 +10,12 @@ exports.fetchAllStories = (req, res) => {
 };
 
 exports.renderOneStory = (req, res) => {
-  res.send(`showing story with id ${req.params.id}`);
+  Story.findOne({ _id: req.params.id })
+       .populate('user')
+       .then(story => {
+         console.log(story);
+         res.render('stories/show', { story });
+       });
 };
 
 exports.renderAddStoryForm = (req, res) => {

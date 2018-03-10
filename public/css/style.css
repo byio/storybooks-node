@@ -15,3 +15,7 @@ main {
 footer {
   margin-top: 1.5rem;
 }
+
+.margin-right-zero {
+  margin-right: 0 !important;
+}
