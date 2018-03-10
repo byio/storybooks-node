@@ -7,6 +7,7 @@ const passport = require('passport');
 const exphbs = require('express-handlebars');
 
 const keys = require('./config/keys');
+const { truncate, stripTags } = require('./helpers/hbs');
 
 const app = express();
 
@@ -45,7 +46,13 @@ app.use((req, res, next) => {
 });
 
 // Handlebars Middleware
-app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }));
+app.engine('hbs', exphbs({
+  helpers: {
+    truncate,
+    stripTags
+  },
+  defaultLayout: 'main', extname: '.hbs'
+}));
 app.set('view engine', 'hbs');
 
 // Express Static Middleware (route for static resources)
