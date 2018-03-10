@@ -7,7 +7,7 @@ const passport = require('passport');
 const exphbs = require('express-handlebars');
 
 const keys = require('./config/keys');
-const { truncate, stripTags } = require('./helpers/hbs');
+const { truncate, stripTags, formatDate } = require('./helpers/hbs');
 
 const app = express();
 
@@ -49,7 +49,8 @@ app.use((req, res, next) => {
 app.engine('hbs', exphbs({
   helpers: {
     truncate,
-    stripTags
+    stripTags,
+    formatDate
   },
   defaultLayout: 'main', extname: '.hbs'
 }));
