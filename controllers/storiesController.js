@@ -3,6 +3,7 @@ const Story = require('../models/Story');
 
 exports.fetchAllStories = (req, res) => {
   Story.find({ status: "public" })
+       .populate('user')
        .then(stories => {
          res.render('stories/index', { stories });
        });
