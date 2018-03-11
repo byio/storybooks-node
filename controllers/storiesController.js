@@ -45,7 +45,21 @@ exports.renderEditStoryForm = (req, res) => {
        });
 };
 
-exports.updateStory = (req, res) => {};
+exports.updateStory = (req, res) => {
+  Story.findOne({ _id: req.params.id })
+       .then(story => {
+         // set new values
+         story.title = req.body.title;
+         story.body = req.body.body;
+         story.status = req.body.status;
+         story.allowComments = !!req.body.allowComments;
+         // saving update
+         story.save()
+              .then(story => {
+                res.redirect('/dashboard');
+              })
+       });
+};
 
 exports.delStory = (req, res) => {
   Story.remove({ _id: req.params.id })
