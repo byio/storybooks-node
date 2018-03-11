@@ -38,7 +38,12 @@ exports.addStory = (req, res) => {
           });
 };
 
-exports.renderEditStoryForm = (req, res) => {};
+exports.renderEditStoryForm = (req, res) => {
+  Story.findOne({ _id: req.params.id })
+       .then(story => {
+         res.render('stories/edit', { story });
+       });
+};
 
 exports.updateStory = (req, res) => {};
 
