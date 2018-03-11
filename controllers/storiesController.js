@@ -62,8 +62,10 @@ exports.updateStory = (req, res) => {
 };
 
 exports.delStory = (req, res) => {
-  Story.remove({ _id: req.params.id })
-       .then(() => {
-         res.redirect('/dashboard');
-       });
+  Story.findOneAndRemove({
+    _id: req.params.id,
+    user: req.user.id
+  }).then(() => {
+    res.redirect('/dashboard');
+  });
 };
