@@ -5,3 +5,7 @@ exports.renderHomePage = (req, res) => {
 exports.renderDashboard = (req, res) => {
   res.render('index/dashboard');
 };
+
+exports.renderAboutPage = (req, res) => {
+  res.render('index/about');
+};

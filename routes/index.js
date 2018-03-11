@@ -11,6 +11,7 @@ const index_controller = require('../controllers/indexController');
 // / Routes
 router.get('/', ensureGuest, index_controller.renderHomePage);
 router.get('/dashboard', ensureAuthenticated, index_controller.renderDashboard);
+router.get('/about', index_controller.renderAboutPage);
 
 // Export Module
 module.exports = router;
