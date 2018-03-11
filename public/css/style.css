@@ -16,6 +16,10 @@ footer {
   margin-top: 1.5rem;
 }
 
+.story-text {
+  height: 8rem;
+}
+
 .margin-right-zero {
   margin-right: 0 !important;
 }
