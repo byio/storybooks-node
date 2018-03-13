@@ -13,7 +13,7 @@ exports.renderOneStory = (req, res) => {
   Story.findOne({ _id: req.params.id })
        .populate('user')
        .then(story => {
-         console.log(story);
+         // console.log(story);
          res.render('stories/show', { story });
        });
 };
@@ -68,4 +68,22 @@ exports.delStory = (req, res) => {
   }).then(() => {
     res.redirect('/dashboard');
   });
+};
+
+exports.addComment = (req, res) => {
+  Story.findOne({ _id: req.params.id })
+       .then(story => {
+         // define new comment
+         const newComment = {
+           commentBody: req.body.commentBody,
+           commentUser: req.user.id
+         };
+         // add new comment to comments array (add to front of array)
+         story.comments.unshift(newComment);
+         // save comment to db
+         story.save()
+              .then(story => {
+                res.redirect(`/stories/show/${story.id}`);
+              });
+       });
 };
