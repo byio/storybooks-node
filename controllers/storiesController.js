@@ -12,6 +12,7 @@ exports.fetchAllStories = (req, res) => {
 exports.renderOneStory = (req, res) => {
   Story.findOne({ _id: req.params.id })
        .populate('user')
+       .populate('comments.commentUser')
        .then(story => {
          // console.log(story);
          res.render('stories/show', { story });
