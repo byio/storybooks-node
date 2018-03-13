@@ -4,6 +4,7 @@ const Story = require('../models/Story');
 exports.fetchAllStories = (req, res) => {
   Story.find({ status: "public" })
        .populate('user')
+       .sort({ date: 'desc' })
        .then(stories => {
          res.render('stories/index', { stories });
        });
@@ -14,7 +15,6 @@ exports.renderOneStory = (req, res) => {
        .populate('user')
        .populate('comments.commentUser')
        .then(story => {
-         // console.log(story);
          res.render('stories/show', { story });
        });
 };
