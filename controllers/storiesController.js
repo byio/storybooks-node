@@ -42,7 +42,12 @@ exports.addStory = (req, res) => {
 exports.renderEditStoryForm = (req, res) => {
   Story.findOne({ _id: req.params.id })
        .then(story => {
-         res.render('stories/edit', { story });
+         // only story's author can access its edit form page
+         if (story.user != req.user.id) {
+          res.redirect('/stories');
+         } else {
+          res.render('stories/edit', { story });
+         }
        });
 };
 
