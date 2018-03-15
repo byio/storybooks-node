@@ -14,10 +14,12 @@
         <h5>{{title}}</h5>
         <p class="story-text">{{truncate (stripTags body) 150}}</p>
         <br>
-        <div class="chip">
-          <img src="{{user.image}}">
-          {{user.firstName}} {{user.lastName}}
-        </div>
+        <a href="/stories/user/{{user.id}}">
+          <div class="chip">
+            <img src="{{user.image}}">
+            {{user.firstName}} {{user.lastName}}
+          </div>
+        </a>
       </div>
       <!-- Card Action -->
       <div class="card-action center-align">
