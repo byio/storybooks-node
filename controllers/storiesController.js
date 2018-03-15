@@ -19,6 +19,16 @@ exports.renderOneStory = (req, res) => {
        });
 };
 
+exports.renderUserStories = (req, res) => {
+  Story.find({ user: req.params.userId, status: 'public' })
+       .populate('user')
+       .then(stories => {
+         res.render('stories/index', {
+           stories
+         });
+       });
+};
+
 exports.renderAddStoryForm = (req, res) => {
   res.render('stories/add');
 };
