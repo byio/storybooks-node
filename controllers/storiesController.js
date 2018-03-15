@@ -29,6 +29,16 @@ exports.renderUserStories = (req, res) => {
        });
 };
 
+exports.renderMyStories = (req, res) => {
+  Story.find({ user: req.user.id })
+       .populate('user')
+       .then(stories => {
+         res.render('stories/index', {
+           stories
+         });
+       });
+};
+
 exports.renderAddStoryForm = (req, res) => {
   res.render('stories/add');
 };
