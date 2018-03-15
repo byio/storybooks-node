@@ -16,9 +16,9 @@ router.get('/show/:id', stories_controller.renderOneStory);
 router.get('/edit/:id', ensureAuthenticated, stories_controller.renderEditStoryForm);
 router.put('/:id', ensureAuthenticated, stories_controller.updateStory);
 router.delete('/:id', ensureAuthenticated, stories_controller.delStory);
-router.post('/comment/:id', stories_controller.addComment);
-router.get('/user/:userId', stories_controller.renderUserStories);
-router.get('/my', stories_controller.renderMyStories);
+router.post('/comment/:id', ensureAuthenticated, stories_controller.addComment);
+router.get('/user/:userId', ensureAuthenticated, stories_controller.renderUserStories);
+router.get('/my', ensureAuthenticated, stories_controller.renderMyStories);
 
 
 // Export Module
